@@ -44,8 +44,8 @@ export function Layout({  children }: { children: React.ReactNode }) {
             </div>
             <nav className="flex gap-4 items-center max-sm:gap-2">
                 {items.map((item) => (
-                    <a key={item.title} href={item.href} className="text-slate-100 hover:text-red-600 transition-colors
-                    max-sm:text-sm">
+                    <a key={item.title} href={item.href} className="text-sm text-slate-100 hover:text-red-600 transition-colors
+                    max-sm:text-xs">
                         {item.title}
                     </a>
                 ))}

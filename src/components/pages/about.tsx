@@ -21,14 +21,15 @@ export function About() {
         />
       </div>
 
-      <section className="flex flex-col z-[1000] items-center text-center px-32 gap-32 max-sm:gap-8 max-sm:px-8 max-sm:py-10">
-        <h1 className="text-4xl font-bold text-slate-100 max-sm:text-2xl">
+      <section className="flex flex-col z-[1000] items-center text-center py-8 
+        px-32 gap-10 max-sm:gap-8 max-sm:px-8 max-sm:py-4">
+        <h1 className="text-2xl font-bold text-slate-100 max-sm:text-xl">
           🔥Consultoria online personalizada: Treinos Avançados para Resultados
           Rápidos e Eficazes
         </h1>
         <div
-          className="flex flex-col items gap-10 text-center font-normal text-xl text-slate-400
-        max-sm:gap-6 max-sm:text-base"
+          className="flex flex-col items gap-10 text-center font-normal text-base text-slate-400
+        max-sm:gap-6 max-sm:text-xs"
         >
           <p>
             Se você está cansado de treinar sem ver resultados e quer evoluir de
@@ -45,7 +46,7 @@ export function About() {
         </div>
         <Button
           asChild
-          className="cursor-pointer w-fit text-lg font-light py-6 max-sm:text-sm max-sm:w-full"
+          className="cursor-pointer w-fit text-sm font-light py-6 max-sm:text-xs max-sm:w-full"
         >
           <Link href={process.env.NEXT_PUBLIC_LINK || ""} target="_blank">
             Transforme seu corpo agora 🔥

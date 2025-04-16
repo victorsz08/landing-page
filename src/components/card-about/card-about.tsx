@@ -16,23 +16,23 @@ interface CardAboutProps {
 export function CardAbout({ icon: Icon, items, title } : CardAboutProps) {
 
     return (
-        <Card className="w-[550px] h-full bg-gray-900 border-none shadow-none gap-10 px-6 py-10
+        <Card className="w-[400px] h-full bg-gray-900 border-none shadow-none gap-10 px-4 py-6
         max-sm:w-full max-sm:h-full max-sm:px-4 max-sm:py-6">
             <CardHeader className="text-slate-100 flex flex-col justify-start items-start gap-2">
                 <span className="text-red-600 bg-red-950 p-2 rounded-full">
                     <Icon size={32}/>
                 </span>
-                <CardTitle className="text-xl font-bold text-slate-100">
+                <CardTitle className="text-base font-bold text-slate-100">
                     {title}
                 </CardTitle>
                     </CardHeader>
                 <CardContent className="flex flex-col gap-2 w-full">
                     {items.map((item, index) => (
                         <div key={index} className="flex gap-3 items-center w-full">
-                            <span className="w-[16px] h-[16px]">
+                            <span className="w-[14px] h-[14px]">
                                 <Check className="text-red-600" size={24}/>
                             </span>
-                            <span className="text-slate-500 text-base font-normal">{item}</span>
+                            <span className="text-slate-500 text-xs font-normal">{item}</span>
                         </div>
                     ))}
                 </CardContent>

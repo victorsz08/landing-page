@@ -5,7 +5,7 @@ import profile from "@/app/assets/perfil.png";
 
 export function PerfilImage() {
   return (
-    <div className="relative w-[650px] h-[650px] max-sm:w-[350px] max-sm:h-[350px]">
+    <div className="relative w-[450px] h-[450px] max-sm:w-[350px] max-sm:h-[350px]">
       {/* Radial Gradient como fundo */}
       <div className="absolute inset-0 z-0 bg-radial to-70% from-red-600 to-gray-950" />
 
