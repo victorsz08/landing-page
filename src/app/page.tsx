@@ -15,10 +15,10 @@ export const metadata: Metadata = {
   description: 'Treinos personalizados com acompanhamento recorrente e planos acessíveis. Alcance seus objetivos com nossa consultoria especializada.',
   keywords: ['treino personalizado', 'consultoria fitness', 'personal trainer online'],
   openGraph: {
-    title: 'Consultoria de Treinos Personalizados | Seu Nome',
+    title: 'Consultoria de Treinos Personalizados | Geraldo Neto Treinador',
     description: 'Treinos personalizados com acompanhamento recorrente e planos acessíveis.',
     url: 'https://www.geraldonetotreinador.com.br',
-    siteName: 'Seu Nome',
+    siteName: 'Geraldo Neto Treinador',
     images: [
       {
         url: 'https://www.geraldonetotreinador.com.br/imagem-og.jpg',
