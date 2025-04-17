@@ -28,7 +28,7 @@ export function AboutMe() {
             Sou graduado em Educação Física pela UNIFACISA! Treino na musculação
             a mais de 10 anos e tenho uma vasta experiência no quesito de
             treinamento com pesos. Ao longo dos anos, já atendi mais de 1000
-            alunos 7 em diversas áreas e com diversos objetivos! E te garanto
+            alunos em diversas áreas e com diversos objetivos! E te garanto
             que todos eles obtiveram seus resultados e chegaram 7 a seus
             objetivos! Meu foco é elevar seus treinos ao máximo em qualquer
             objetivo, sempre buscaremos o Máximo desempenho!
