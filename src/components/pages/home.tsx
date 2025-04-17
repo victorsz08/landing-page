@@ -94,9 +94,9 @@ export function Home() {
               className="bg-red-600 hover:bg-red-700 text-white font-bold py-6 px-6 max-sm:px-3 max-sm:text-sm 
              rounded-md text-base max-sm:w-full"
             >
-              <Link href={process.env.NEXT_PUBLIC_LINK || "#"} target="_blank">
+              <a href="#planos" >
                 Comece sua transformação hoje! 🔥
-              </Link>
+              </a>
             </Button>
           </motion.div>
 

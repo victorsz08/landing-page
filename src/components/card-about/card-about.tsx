@@ -59,7 +59,8 @@ export function CardExclusives() {
                 icon={CheckCircle}
                 items={[
                     "Feedbacks regulares, ajustes personalizados e suporte por vídeos para aprimorar suas execuções.​",
-                    "Disponibilidade para tirar dúvidas e adaptar treinos conforme suas necessidades."
+                    "Disponibilidade para tirar dúvidas e adaptar treinos conforme suas necessidades.",
+                    "Acesso a videos explicativos de todos os exercícios prescritos, garantindo um melhor entendimento e aprendizado!"
                 ]}
             />
             <CardAbout
@@ -67,7 +68,6 @@ export function CardExclusives() {
                 icon={BookmarkCheck}
                 items={[
                     "Métodos baseados em ciência e mais de 10 anos de experiência em musculação, garantindo máxima eficiência nos treinos.",
-                    "Acesso a vídeos explicativos de todos os exercícios prescritos, garantindo execuções corretas."
                 ]}
             />
         </div>
