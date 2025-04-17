@@ -25,13 +25,13 @@ export function AboutMe() {
         <div className="flex flex-col text-start gap-3 w-[650px] max-sm:w-full max-sm:text-center">
           <h3 className="text-xl text-red-600">Me chamo Geraldo Neto</h3>
           <p className="text-base font-light text-slate-400">
-            Sou graduado em Educação Física pela UNIFACISA! Treino na musculação
-            a mais de 10 anos e tenho uma vasta experiência no quesito de
-            treinamento com pesos. Ao longo dos anos, já atendi mais de 1000
-            alunos em diversas áreas e com diversos objetivos! E te garanto
-            que todos eles obtiveram seus resultados e chegaram 7 a seus
-            objetivos! Meu foco é elevar seus treinos ao máximo em qualquer
-            objetivo, sempre buscaremos o Máximo desempenho!
+            Ao longo destes anos, atendi diversas pessoas com diversos
+            objetivos! Seja eles emagrecimento, saúde, hipertrofia,
+            reabilitação, etc. Conseguimos alcançar todos os objetivos! Hoje,
+            minha área de domínio é a musculação em sí a qual trabalho nestes
+            longos anos e estou aqui disposto a te ajudar da melhor forma
+            possível e te ajudar a buscar o máximo desempenho com meus métodos
+            de treino, vamos comigo?
           </p>
         </div>
       </section>
@@ -41,7 +41,7 @@ export function AboutMe() {
            rounded-md text-base max-sm:w-full"
       >
         <Link href={process.env.NEXT_PUBLIC_LINK || ""} target="_blank">
-            Comece hoje🔥
+          Comece hoje🔥
         </Link>
       </Button>
     </section>
