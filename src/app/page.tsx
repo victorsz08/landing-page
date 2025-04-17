@@ -11,11 +11,11 @@ import { Metadata } from "next";
 
 // app/page.js
 export const metadata: Metadata = {
-  title: 'Consultoria de Treinos Personalizados | Geraldo Neto Treinador',
+  title: 'TREINO 100% INDIVIDUAL PARA ALCANÇAR SEUS OBJETIVOS SEM ENROLAÇÃO | Geraldo Neto Treinador',
   description: 'Treinos personalizados com acompanhamento recorrente e planos acessíveis. Alcance seus objetivos com nossa consultoria especializada.',
   keywords: ['treino personalizado', 'consultoria fitness', 'personal trainer online'],
   openGraph: {
-    title: 'Consultoria de Treinos Personalizados | Geraldo Neto Treinador',
+    title: 'TREINO 100% INDIVIDUAL PARA ALCANÇAR SEUS OBJETIVOS SEM ENROLAÇÃO | Geraldo Neto Treinador',
     description: 'Treinos personalizados com acompanhamento recorrente e planos acessíveis.',
     url: 'https://www.geraldonetotreinador.com.br',
     siteName: 'Geraldo Neto Treinador',
