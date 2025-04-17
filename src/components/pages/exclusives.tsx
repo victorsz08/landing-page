@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CardExclusives } from "../card-about/card-about";
 import { Button } from "../ui/button";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 export function Exclusives() {
