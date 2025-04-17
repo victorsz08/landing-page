@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { PerfilImage } from "../images/perfil-image";
 import { Button } from "../ui/button";
 import { motion } from "framer-motion"
