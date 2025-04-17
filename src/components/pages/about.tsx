@@ -103,8 +103,7 @@ export function About() {
           className="text-2xl font-bold text-slate-100 max-sm:text-xl"
           variants={itemVariants}
         >
-          🔥Consultoria online personalizada: Treinos avançados para resultados
-          rápidos e eficazes
+          Consultoria online personalizada! Treinos de acordo com seu objetivo, feito para você evoluir rapidamente e com métodos eficazes 
         </motion.h1>
 
         <div
