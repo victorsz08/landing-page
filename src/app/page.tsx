@@ -7,6 +7,29 @@ import { LimitedSpots } from "@/components/pages/limited-spots";
 import { Plans } from "@/components/pages/plans";
 import { Steps } from "@/components/pages/steps";
 import { Testimonials } from "@/components/pages/testemonials";
+import { Metadata } from "next";
+
+// app/page.js
+export const metadata: Metadata = {
+  title: 'Consultoria de Treinos Personalizados | Geraldo Neto Treinador',
+  description: 'Treinos personalizados com acompanhamento recorrente e planos acessíveis. Alcance seus objetivos com nossa consultoria especializada.',
+  keywords: ['treino personalizado', 'consultoria fitness', 'personal trainer online'],
+  openGraph: {
+    title: 'Consultoria de Treinos Personalizados | Seu Nome',
+    description: 'Treinos personalizados com acompanhamento recorrente e planos acessíveis.',
+    url: 'https://www.geraldonetotreinador.com.br',
+    siteName: 'Seu Nome',
+    images: [
+      {
+        url: 'https://www.geraldonetotreinador.com.br/imagem-og.jpg',
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'pt_BR',
+    type: 'website',
+  },
+};
 
 
 

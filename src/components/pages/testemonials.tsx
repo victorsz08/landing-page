@@ -80,7 +80,7 @@ export function Testimonials() {
                         <p className="text-sm text-gray-400">{testimonial.title}</p>
                       </div>
                     </div>
-                    <p className="text-gray-300 italic mb-4">"{testimonial.quote}"</p>
+                    <p className="text-gray-300 italic mb-4">{testimonial.quote}</p>
                   </CardContent>
                   <CardFooter className="p-6 pt-0 flex justify-between items-center">
                     <div className="text-sm text-gray-400">{testimonial.date}</div>
