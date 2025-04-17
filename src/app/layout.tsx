@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Layout } from "@/components/layout/layout";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
-
+const GAR_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 const poppins = Poppins({
   weight: ["100",  "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
       >
         <Layout>{children}</Layout>
       </body>
+      <GoogleAnalytics gaId={GAR_ID} />
     </html>
   );
 }
