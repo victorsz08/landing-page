@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { Footer } from "./footer";
 
 
 interface NavItemProps {
@@ -36,8 +37,8 @@ const items: NavItemProps[] = [
 export function Layout({  children }: { children: React.ReactNode }) {
   return (
     <main>
-        <header className="px-8 py-6 flex items-center justify-between bg-gray-950 border-b border-gray-800
-        max-sm:flex-col max-sm:justify-center max-sm:gap-4">
+        <header className="px-8 fixed w-full z-[10000] py-6 flex items-center justify-between bg-gray-950 border-b border-gray-800
+            max-sm:flex-col max-sm:justify-center max-sm:gap-4">
             <div className="flex justify-start gap-1 text-xl font-bold text-slate-100 max-sm:text-lg">
                 <h1>GERALDO NETO</h1>
                 <h1 className="text-red-600">TREINADOR</h1>
@@ -56,12 +57,19 @@ export function Layout({  children }: { children: React.ReactNode }) {
                 </Button>
             </nav>
         </header>
-        <section>
+        <section className="relative">
             {children}
+            <div className="flex w-full h-fit items-center justify-center animate-bounce repeat-infinite z-[10000] 
+            bottom-0 right-0 px-4 py-5 fixed">
+                <Button asChild className="bg-red-600 hover:bg-red-700 text-white font-bold 
+                    py-6 px-6 rounded-md text-base">
+                    <Link href={process.env.NEXT_PUBLIC_LINK || ""} target="_blank">
+                        GARANTIR MINHA VAGA 🔥
+                    </Link>
+                </Button>
+            </div>
         </section>
-        <footer>
-
-        </footer>
+        <Footer/>
     </main>
   );
 }
