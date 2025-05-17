@@ -35,6 +35,7 @@ import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import { Button } from "../ui/button";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
+import { useState } from "react";
 
 export type PlanType = {
   id: string;
@@ -79,6 +80,7 @@ const checkoutPaymentSchema = z.object({
 type CheckoutPaymentType = z.infer<typeof checkoutPaymentSchema>;
 
 export function CreateFormPayment({ children }: { children: React.ReactNode }) {
+  const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<CheckoutPaymentType>({
     resolver: zodResolver(checkoutPaymentSchema),
     defaultValues: {
@@ -91,10 +93,12 @@ export function CreateFormPayment({ children }: { children: React.ReactNode }) {
 
   async function onSubmit(data: CheckoutPaymentType) {
     const plan = plans.find((item) => item.id === data.id);
+    setLoading(true);
 
     if (!plan) {
+      setLoading(false);
       return;
-    }
+    };
 
     const preference = {
       item: {
@@ -120,12 +124,15 @@ export function CreateFormPayment({ children }: { children: React.ReactNode }) {
 
       if (response.ok) {
         const data = await response.json();
+        setLoading(false);
         window.location.href = data.init_point; // Redireciona para a página de pagamento do Mercado Pago
       } else {
         console.error("Erro ao criar preferência:", await response.json());
+        setLoading(false);
         // Tratar o erro no frontend
       }
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   }
@@ -281,8 +288,9 @@ export function CreateFormPayment({ children }: { children: React.ReactNode }) {
                   </Button>
                 </div>
               </DialogClose>
-              <Button type="submit" className="text-xs cursor-pointer">
-                Efetuar pagamento
+              <Button type="submit" className={`text-xs cursor-pointer 
+                ${loading ? "filter brightness-[60%]" : ""}`}>
+                {loading ? "Carregando..." : "Efetuar pagamento"} 
               </Button>
             </div>
           </form>

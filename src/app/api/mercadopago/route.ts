@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { item, metadata } = body;
-    const notificationUrl = "https://webhook.site/0b313d0b-976e-4609-934d-e7bd317de7f8"
+    const notificationUrl = "https://geraldo-neto-treinador-git-dev-victorsz08s-projects.vercel.app/api/webhook-mercadopago"
 
 
     const recipients = [new Recipient(metadata.customerEmail, metadata.customerName)];
@@ -59,13 +59,16 @@ export async function POST(req: NextRequest) {
       },
     });
 
+
+
     const personalization = [
       {
         email: metadata.customerEmail,
         data: {
-          date: new Date().toISOString(),
           name: metadata.customerName,
-          preference_id: preferenceResult.id,
+          product_name: item.title,
+          order_id: preferenceResult.id,
+          subtotal: item.unit_price.toString(),
           support_email: "suporte@geraldonetotreinador.com.br",
           total_billing: item.unit_price.toString(),
         },
@@ -77,7 +80,7 @@ export async function POST(req: NextRequest) {
       .setTo(recipients)
       .setReplyTo(sentFrom)
       .setSubject("Pedido Recebido")
-      .setTemplateId("zr6ke4n807v4on12")
+      .setTemplateId("neqvygm130dg0p7w")
       .setPersonalization(personalization);
 
     await mailerSend.email.send(emailParams);
