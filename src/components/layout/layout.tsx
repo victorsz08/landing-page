@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Footer } from "./footer";
+import { FormPay } from "../forms/form-pay";
 
 
 interface NavItemProps {
@@ -61,12 +62,7 @@ export function Layout({  children }: { children: React.ReactNode }) {
             {children}
             <div className="flex w-full h-fit items-center justify-center animate-bounce repeat-infinite z-[10000] 
             bottom-0 right-0 px-4 py-5 fixed">
-                <Button asChild className="bg-red-600 hover:bg-red-700 text-white font-bold 
-                    py-6 px-6 rounded-md text-base">
-                    <Link href={process.env.NEXT_PUBLIC_LINK || ""} target="_blank">
-                        GARANTIR MINHA VAGA 🔥
-                    </Link>
-                </Button>
+                <FormPay>GARANTIR MINHA VAGA 🔥</FormPay>
             </div>
         </section>
         <Footer/>
