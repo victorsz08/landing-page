@@ -31,36 +31,31 @@ export async function POST(req: NextRequest) {
     }
     
     const paymentDetails = await paymentResponse.json();
-    
-    console.log(paymentDetails)
 
     if (paymentDetails.status === "approved") {
       const customerEmail = paymentDetails.metadata.customer_email;
       const customerName = paymentDetails.metadata.customer_name;
       const productName = paymentDetails.metadata.customer_plan_name;
-      const orderId = paymentDetails.id;
       const supportEmail = "suporte@seusite.com.br";
       const templateId = "zr6ke4n807v4on12";
+      const item = paymentDetails.items[0];
 
       if (customerEmail && customerName && productName) {
         const recipients = [new Recipient(customerEmail, customerName)];
-        const senderEmail = "suporte@test-68zxl279qne4j905.mlsender.net"; // Substitua pelo seu email verificado
-        const senderName = "Geraldo Neto Treinador"; // Ou use o nome do cliente, se apropriado
+        const senderEmail = "suporte@test-68zxl279qne4j905.mlsender.net";
+        const senderName = "Geraldo Neto Treinador";
         const sentFrom = new Sender(senderEmail, senderName);
 
         const personalization = [
           {
             email: customerEmail,
             data: {
-              order_id: orderId,
+              order_id: paymentId,
               name: customerName,
-              product_name: productName,
-              support_email: supportEmail,
-              payment_date: new Date().toLocaleDateString("pt-BR", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              }),
+              product_name: item.title,
+              subtotal: item.unit_price,
+              total_billing: item.unit_price,
+              support_email: supportEmail
             },
           },
         ];
@@ -69,7 +64,7 @@ export async function POST(req: NextRequest) {
           .setFrom(sentFrom)
           .setTo(recipients)
           .setReplyTo(sentFrom)
-          .setSubject(`Seu pedido #${orderId} foi aprovado!`)
+          .setSubject(`Seu pedido #${paymentId} foi aprovado!`)
           .setTemplateId(templateId)
           .setPersonalization(personalization);
 
