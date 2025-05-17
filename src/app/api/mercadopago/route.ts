@@ -59,6 +59,8 @@ export async function POST(req: NextRequest) {
       },
     });
 
+
+
     const personalization = [
       {
         email: metadata.customerEmail,
@@ -66,6 +68,7 @@ export async function POST(req: NextRequest) {
           name: metadata.customerName,
           product_name: item.title,
           order_id: preferenceResult.id,
+          subtotal: item.unit_price.toString(),
           support_email: "suporte@geraldonetotreinador.com.br",
           total_billing: item.unit_price.toString(),
         },
