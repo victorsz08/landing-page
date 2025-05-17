@@ -35,7 +35,6 @@ import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import { Button } from "../ui/button";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
-import { redirect } from "next/navigation";
 
 export type PlanType = {
   id: string;
@@ -93,20 +92,22 @@ export function CreateFormPayment({ children }: { children: React.ReactNode }) {
   async function onSubmit(data: CheckoutPaymentType) {
     const plan = plans.find((item) => item.id === data.id);
 
+    if (!plan) {
+      return;
+    }
+
     const preference = {
-        email: data.email,
-        name: data.name,
-        item: {
-            title: plan?.title,
-            amount: plan?.amount,
-        }
+      item: {
+        currency_id: plan.id,
+        title: plan.title,
+        unit_price: plan.amount,
+      },
+      metadata: {
+        customerEmail: data.email,
+        customerName: data.name,
+        customerPlanName: plan.title,
+      },
     };
-
-    // TESTUSER712910344
-    // Oo7e70rVgK
-
-    // TESTUSER1704875122
-    // AuwN3cFTsp
 
     try {
       const response = await fetch("/api/mercadopago", {

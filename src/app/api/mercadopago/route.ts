@@ -13,57 +13,61 @@ const client = new MercadoPagoConfig({
 const preference = new Preference(client);
 
 export type PaymentDataType = {
-  items: {
+  item: {
     title: string;
     quantity: number;
     unit_price: number;
     currency_id: string;
-  }[];
-  total_amount: number;
-  notification_url: string;
-  back_urls: {
-    success: string;
-    failure: string;
-    pending: string;
   };
+  metadata: {
+    customerEmail: string;
+    customerName: string;
+    customerPlanName: string;
+  }
   auto_return: string;
 };
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { item, email, name } = body;
+    const { item, metadata } = body;
+    const notificationUrl = "https://webhook.site/0b313d0b-976e-4609-934d-e7bd317de7f8"
 
-    const recipients = [new Recipient(email, name)];
-    const senderEmail = "seu_nome@test-68zxl279qne4j905.mlsender.net"; // Substitua pelo seu email verificado
-    const senderName = "Nome da sua loja"; // Ou use o nome do cliente, se apropriado
+
+    const recipients = [new Recipient(metadata.customerEmail, metadata.customerName)];
+    const senderEmail = "email@test-68zxl279qne4j905.mlsender.net";
+    const senderName = "Geraldo Neto Treinador";
     const sentFrom = new Sender(senderEmail, senderName);
 
     const preferenceResult = await preference.create({
       body: {
         items: [
           {
-            id: "1",
+            id: item.currency_id,
             title: item.title,
             quantity: 1,
-            unit_price: item.amount,
+            unit_price: item.unit_price,
             currency_id: "BRL",
           },
         ],
+        notification_url: notificationUrl,
+        metadata: {
+          customerEmail: metadata.customerEmail,
+          customerName: metadata.customerName,
+          customerPlanName: item.title
+        }
       },
     });
 
-    console.log("Preferência criada:", preferenceResult);
-
     const personalization = [
       {
-        email: email,
+        email: metadata.customerEmail,
         data: {
           date: new Date().toISOString(),
-          name: name,
+          name: metadata.customerName,
           preference_id: preferenceResult.id,
-          support_email: "suporte@email.com",
-          total_billing: item.amount.toString(),
+          support_email: "suporte@geraldonetotreinador.com.br",
+          total_billing: item.unit_price.toString(),
         },
       },
     ];
@@ -77,10 +81,8 @@ export async function POST(req: NextRequest) {
       .setPersonalization(personalization);
 
     await mailerSend.email.send(emailParams);
-
     return NextResponse.json({ init_point: preferenceResult.init_point });
   } catch (error: any) {
-    console.error("Erro ao criar preferência de pagamento");
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

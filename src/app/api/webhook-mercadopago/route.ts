@@ -8,20 +8,17 @@ export async function POST(req: NextRequest) {
     const notification = await req.json();
     const paymentId = notification.data.id;
 
-    // Verificar a autenticidade da notificação (altamente recomendado)
-    // Consulte a documentação do Mercado Pago sobre como verificar a integridade da notificação
-
+    
     const paymentResponse = await fetch(
-      `https://api.mercadopago.com/v1/payments/${111251169221}`,
+      `https://api.mercadopago.com/v1/payments/${paymentId}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_MERCADOPAGO_ACCESS_TOKEN!}`,
         },
       }
     );
-
-    console.log(paymentResponse)
-
+    
+    
     if (!paymentResponse.ok) {
       console.error(
         "Erro ao obter detalhes do pagamento:",
@@ -32,21 +29,23 @@ export async function POST(req: NextRequest) {
         { status: 500 }
       );
     }
-
+    
     const paymentDetails = await paymentResponse.json();
+    
+    console.log(paymentDetails)
 
     if (paymentDetails.status === "approved") {
-      const customerEmail = "victorszdeveloper@gmail.com";
-      const customerName = "Victor Siqueira"; // Assumindo que você também passa o nome nos metadados
-      const productName = "Plano Trimestral"; // Assumindo que você passa o nome do produto
-      const orderId = paymentDetails.id; // Usando o ID do pagamento como ID do pedido
-      const supportEmail = "suporte@seusite.com.br"; // Seu email de suporte
-      const templateId = "zr6ke4n807v4on12"; // Substitua pelo ID do seu template
+      const customerEmail = paymentDetails.metadata.customer_email;
+      const customerName = paymentDetails.metadata.customer_name;
+      const productName = paymentDetails.metadata.customer_plan_name;
+      const orderId = paymentDetails.id;
+      const supportEmail = "suporte@seusite.com.br";
+      const templateId = "zr6ke4n807v4on12";
 
       if (customerEmail && customerName && productName) {
         const recipients = [new Recipient(customerEmail, customerName)];
-        const senderEmail = "seu_nome@test-68zxl279qne4j905.mlsender.net"; // Substitua pelo seu email verificado
-        const senderName = "Nome da sua loja"; // Ou use o nome do cliente, se apropriado
+        const senderEmail = "suporte@test-68zxl279qne4j905.mlsender.net"; // Substitua pelo seu email verificado
+        const senderName = "Geraldo Neto Treinador"; // Ou use o nome do cliente, se apropriado
         const sentFrom = new Sender(senderEmail, senderName);
 
         const personalization = [
@@ -62,7 +61,6 @@ export async function POST(req: NextRequest) {
                 month: "long",
                 day: "numeric",
               }),
-              // Adicione mais variáveis conforme necessário para o seu template
             },
           },
         ];
@@ -77,7 +75,7 @@ export async function POST(req: NextRequest) {
 
         try {
           await mailersend.email.send(emailParams);
-          console.log("E-mail de aprovação enviado com sucesso:", orderId);
+
           return NextResponse.json({
             message: "E-mail de aprovação enviado com sucesso",
           });
@@ -89,9 +87,6 @@ export async function POST(req: NextRequest) {
           );
         }
       } else {
-        console.error(
-          "Dados do cliente ou produto não encontrados nos metadados."
-        );
         return NextResponse.json(
           {
             message:
