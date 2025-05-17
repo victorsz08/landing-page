@@ -1,5 +1,6 @@
 "use client";
 
+import { CreateFormPayment } from "../form/create-form-payment";
 import { PerfilImage } from "../images/perfil-image";
 import { Button } from "../ui/button";
 import { motion } from "framer-motion"
@@ -88,15 +89,14 @@ export function Home() {
             custom={0}
             variants={buttonVariants}
           >
+            <CreateFormPayment>
             <Button
-              asChild
               className="bg-red-600 hover:bg-red-700 text-white font-bold py-6 px-6 max-sm:px-3 max-sm:text-sm 
              rounded-md text-base max-sm:w-full"
             >
-              <a href="#planos" >
                 Comece sua transformação hoje! 🔥
-              </a>
             </Button>
+            </CreateFormPayment>
           </motion.div>
 
           <motion.div
